@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecionando para WhatsApp...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+        .loading {
+            text-align: center;
+        }
+    </style>
+    <script>
+        const whatsappTeam = [
+            { name: 'Douglas', number: '5548996285385' },
+            { name: 'Luciana', number: '5548996172481' },
+            { name: 'Michel', number: '5551999702808' }
+        ];
+
+        // Pega o contador e distribui sequencialmente
+        let counter = parseInt(localStorage.getItem('whatsappCounter') || '0');
+        const selectedPerson = whatsappTeam[counter % whatsappTeam.length];
+
+        // Incrementa para próxima vez
+        localStorage.setItem('whatsappCounter', (counter + 1).toString());
+
+        // Mensagem opcional
+        const message = encodeURIComponent('Olá! Vim pelo site da Academia Lendária.');
+
+        // Redireciona
+        window.location.href = `https://wa.me/${selectedPerson.number}?text=${message}`;
+    </script>
+</head>
+<body>
+    <div class="loading">
+        <h2>Conectando com nossa equipe...</h2>
+        <p>Você será atendido em instantes.</p>
+    </div>
+</body>
+</html>
