@@ -23,12 +23,9 @@
             { name: 'Luciana', number: '5548996172481' }
         ];
 
-        // Pega o contador e distribui sequencialmente
-        let counter = parseInt(localStorage.getItem('whatsappCounter') || '0');
-        const selectedPerson = whatsappTeam[counter % whatsappTeam.length];
-
-        // Incrementa para próxima vez
-        localStorage.setItem('whatsappCounter', (counter + 1).toString());
+        // Randomização real - 50/50 para cada visitante
+        const randomIndex = Math.floor(Math.random() * whatsappTeam.length);
+        const selectedPerson = whatsappTeam[randomIndex];
 
         // Mensagem opcional
         const message = encodeURIComponent('Oi, estou com dúvidas sobre os produtos da Academia Lendária');
